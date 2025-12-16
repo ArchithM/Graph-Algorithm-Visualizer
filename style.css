@@ -74,7 +74,7 @@ select option {
 button {
     cursor: pointer;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; 
     margin-bottom: 10px;
 }
 

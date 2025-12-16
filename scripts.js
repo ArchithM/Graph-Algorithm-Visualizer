@@ -47,7 +47,7 @@ function updateCanvasSize() {
 
 function setupEventListeners() {
     canvas.addEventListener('click', handleCanvasClick);
-
+ 
     algorithmSelect.addEventListener('change', () => {
         const algo = algorithmSelect.value;
         document.getElementById('algoName').textContent = algoDescriptions[algo].name;
