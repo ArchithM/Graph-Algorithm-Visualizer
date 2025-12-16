@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Traversal Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Graph Traversal Visualizer</h1>
+        
+        <div class="main-content">
+            <div class="controls">
+                <div class="mode-indicator" id="modeIndicator">
+                    Mode: Add Nodes
+                </div>
+
+                <div class="control-group">
+                    <label>Algorithm</label>
+                    <select id="algorithm">
+                        <option value="bfs">Breadth-First Search (BFS)</option>
+                        <option value="dfs">Depth-First Search (DFS)</option>
+                        <option value="dijkstra">Dijkstra's Algorithm</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Mode</label>
+                    <select id="mode">
+                        <option value="addNode">Add Nodes</option>
+                        <option value="addEdge">Add Edges</option>
+                        <option value="setStart">Set Start Node</option>
+                        <option value="delete">Delete</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Graph Type</label>
+                    <select id="graphType">
+                        <option value="undirected">Undirected</option>
+                        <option value="directed">Directed</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Animation Speed</label>
+                    <input type="range" id="speed" min="100" max="2000" value="500">
+                    <div class="speed-value" id="speedValue">500ms</div>
+                </div>
+
+                <button class="btn-primary" id="startBtn">Start Traversal</button>
+                <button class="btn-secondary" id="pauseBtn">Pause</button>
+                <button class="btn-secondary" id="stepBtn">Step</button>
+                <button class="btn-secondary" id="resetBtn">Reset Traversal</button>
+                <button class="btn-danger" id="clearBtn">Clear Graph</button>
+                <button class="btn-secondary" id="sampleBtn">Load Example Graph</button>
+
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="nodeCount">0</div>
+                        <div class="stat-label">Nodes</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="edgeCount">0</div>
+                        <div class="stat-label">Edges</div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4a5568;"></div>
+                        <span>Unvisited</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #00d9ff;"></div>
+                        <span>In Queue</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ffd93d;"></div>
+                        <span>Current</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #00ff88;"></div>
+                        <span>Visited</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ff6b6b;"></div>
+                        <span>Start Node</span>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <strong>Instructions:</strong><br>
+                    • Click canvas to add nodes<br>
+                    • Switch to "Add Edges" and click two nodes<br>
+                    • Set a start node before traversing<br>
+                    • For Dijkstra, enter edge weights
+                </div>
+            </div>
+
+            <div class="canvas-container">
+                <svg id="graphCanvas"></svg>
+                <div class="weight-input-container" id="weightInput">
+                    <input type="number" id="edgeWeight" value="1" min="1" placeholder="Weight">
+                    <button onclick="confirmEdge()">Add</button>
+                    <button onclick="cancelEdge()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="traversal-order" id="traversalOrder">
+            <h3>Traversal Order</h3>
+            <div class="order-list" id="orderList"></div>
+        </div>
+
+        <div class="info-panel">
+            <h3 id="algoName">Breadth-First Search (BFS)</h3>
+            <p id="algoDescription">
+                BFS explores all neighbors at the current depth before moving to nodes at the next depth level. 
+                It uses a queue data structure and guarantees the shortest path in unweighted graphs.
+                Time Complexity: O(V + E) | Space Complexity: O(V)
+            </p>
+        </div>
+    </div>
+    <script src = "scripts.js"></script>
+</body>
+</html>
